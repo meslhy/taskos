@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: yousef
+spec:
+  selector: 
+    matchLabels:
+      app: my-web-app
+  replicas: 2
+  template: 
+    metadata:
+      name: my-web-app
+      labels:
+        app: my-web-app
+    spec:
+      containers:
+        - image: meslhy/proj:latest
+          name: nginx-container
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
